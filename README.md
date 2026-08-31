@@ -60,6 +60,54 @@ Galaxy-Structural-Parameters/
     ├── requirements.txt
     └── .gitignore
 ```
+## Dataset
+
+The dataset required to run GALNET is available from Google Drive:
+
+[Download the GALNET dataset from Google Drive](https://drive.google.com/file/d/15OaGl6HFyipI5PyuIno9xNSY31p1noSA/view?usp=sharing&utm_source=chatgpt.com)
+
+### Download the dataset
+
+The dataset can be downloaded using `gdown`:
+
+```bash
+pip install gdown
+```
+
+From the repository root, run:
+
+```bash
+gdown "https://drive.google.com/uc?id=15OaGl6HFyipI5PyuIno9xNSY31p1noSA"
+```
+
+Extract the downloaded archive into the `galnet/data/` directory.
+
+The data/ directory contains the real background data, PSFs, and the generated training, validation, and test datasets.
+
+galnet/
+└── data/
+    ├── real/
+    │   ├── image/
+    │   │   └── *.fits
+    │   ├── psf/
+    │   │   └── *.fits
+    │   └── background.csv
+    │
+    ├── train/
+    │   └── *.fits
+    ├── validation/
+    │   └── *.fits
+    ├── test/
+    │   └── *.fits
+    │
+    ├── train_data.csv
+    ├── validation_data.csv
+    └── test_data.csv
+
+The real/ directory contains the real background observations and point-spread functions (PSFs) used to generate the simulated galaxy images.
+image/ — real background images in FITS format.
+psf/ — PSF images corresponding to the background observations.
+background.csv — catalog linking the background images with their corresponding PSFs.
 
 ## Usage
 
