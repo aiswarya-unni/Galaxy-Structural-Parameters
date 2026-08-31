@@ -45,8 +45,22 @@ The `galnet` environment should be marked as active.
 ## Repository Structure
 
 ```text
+## Repository Structure
+
+```text
 Galaxy-Structural-Parameters/
 └── galnet/
+    ├── data/                 # Downloaded separately
+    │   ├── real/
+    │   │   ├── image/
+    │   │   ├── psf/
+    │   │   └── background.csv
+    │   ├── train/
+    │   ├── validation/
+    │   ├── test/
+    │   ├── train_data.csv
+    │   ├── validation_data.csv
+    │   └── test_data.csv
     ├── GaLNet/
     │   ├── cmodel.py
     │   ├── train.py
@@ -59,6 +73,8 @@ Galaxy-Structural-Parameters/
     ├── galaxy.py
     ├── requirements.txt
     └── .gitignore
+```
+
 ```
 ## Dataset
 
