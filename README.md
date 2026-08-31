@@ -66,7 +66,7 @@ The dataset required to run GALNET is available from Google Drive:
 
 [Download the GALNET dataset from Google Drive](https://drive.google.com/file/d/15OaGl6HFyipI5PyuIno9xNSY31p1noSA/view?usp=sharing&utm_source=chatgpt.com)
 
-### Download the dataset
+### 1. Download the dataset
 
 The dataset can be downloaded using `gdown`:
 
@@ -82,8 +82,11 @@ gdown "https://drive.google.com/uc?id=15OaGl6HFyipI5PyuIno9xNSY31p1noSA"
 
 Extract the downloaded archive into the `galnet/data/` directory.
 
-The data/ directory contains the real background data, PSFs, and the generated training, validation, and test datasets.
+### 2. Dataset directory structure
 
+The `data/` directory contains the real background data, PSFs, and the generated training, validation, and test datasets.
+
+```text
 galnet/
 └── data/
     ├── real/
@@ -103,11 +106,31 @@ galnet/
     ├── train_data.csv
     ├── validation_data.csv
     └── test_data.csv
+```
 
-The real/ directory contains the real background observations and point-spread functions (PSFs) used to generate the simulated galaxy images.
-image/ — real background images in FITS format.
-psf/ — PSF images corresponding to the background observations.
-background.csv — catalog linking the background images with their corresponding PSFs.
+#### `real/`
+
+The `real/` directory contains the real background observations and point-spread functions (PSFs) used to generate the simulated galaxy images.
+
+* `image/` — real background images in FITS format.
+* `psf/` — PSF images corresponding to the background observations.
+* `background.csv` — catalog linking the background images with their corresponding PSFs.
+
+#### Generated datasets
+
+The following directories contain the simulated galaxy images generated using `galaxy.py`:
+
+* `train/` — training dataset.
+* `validation/` — validation dataset.
+* `test/` — test dataset.
+
+The corresponding CSV files contain the parameters associated with each simulated galaxy:
+
+* `train_data.csv` — parameters for the training dataset.
+* `validation_data.csv` — parameters for the validation dataset.
+* `test_data.csv` — parameters for the test dataset.
+
+The CSV files include the galaxy name, magnitude, position, effective radius, position angle, axis ratio, Sérsic index, and SNR.
 
 ## Usage
 
@@ -123,7 +146,30 @@ From the `galnet` directory:
 python galaxy.py
 ```
 
-The generated datasets are organized according to the configuration specified in `galaxy.py`.
+The `galaxy.py` script generates the simulated galaxy datasets using the real background images and PSFs in `data/real/`.
+
+The dataset mode is controlled by the `mode` parameter in `galaxy.py`:
+
+```python
+mode = "train"        # Training dataset
+mode = ""   # Validation dataset
+mode = "test"         # Test dataset
+```
+
+For example, to generate the training dataset, set:
+
+```python
+mode = "train"
+```
+
+and run:
+
+```bash
+python galaxy.py
+```
+
+Similarly, set `mode = ""` or `mode = "test"` to generate the corresponding datasets.
+
 
 ### 2. Train the GALNET model
 
