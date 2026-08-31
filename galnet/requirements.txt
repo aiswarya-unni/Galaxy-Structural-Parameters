@@ -1,0 +1,8 @@
+pandas
+numpy== 1.23.5
+matplotlib
+astropy
+scikit-learn
+scikit-image
+tensorflow==2.14.0
+torch
