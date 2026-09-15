@@ -247,3 +247,12 @@ galnet/
         └── test_y.png
 ```
 
+### 5. Real galaxy catalog
+
+In addition to the simulated datasets used for training, validation, and testing, the repository includes a catalog of real galaxies observed in LSST DP1 in the file,
+```bash
+galnet_catalog.fits
+```
+This real-galaxy catalog contains the full set of GALNET-derived structural parameters in all LSSTComCam bands ($u$, $g$, $r$, $i$, $z$, $y$), together with SourceExtractor++ measurements in the $r$ and $i$ bands.
+
+
